@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-burgundy: #7C0E44;
+  --color-berry: #AA5E7A;
+  --color-blush: #D49A9A;
+  --color-champagne: #F2DACE;
+  --color-plum: #3A1224;
+  --color-sand-light: #FAF3EF;
+}
+
+@layer utilities {
+  .font-cinzel {
+    font-family: 'Cinzel', serif;
+  }
+  .font-playfair {
+    font-family: 'Playfair Display', serif;
+  }
+  .font-sans-luxury {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+}
+
+@layer base {
+  body {
+    background-color: #12040b;
+    color: #F2DACE;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom glassmorphism utilities matching Burgundy & Champagne palette */
+.glass-pill {
+  background: rgba(124, 14, 68, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 154, 154, 0.25);
+}
+
+.glass-card {
+  background: rgba(124, 14, 68, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(212, 154, 154, 0.28);
+}
+
+/* Print / PDF Export Styling */
+@media screen {
+  .print-dossier {
+    display: none !important;
+  }
+}
+
+@media print {
+  body {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+    font-size: 12pt;
+  }
+
+  /* Hide non-printable elements */
+  header,
+  footer,
+  nav,
+  button,
+  .no-print,
+  .leaflet-container,
+  .modal-backdrop,
+  [role="dialog"] > div:not(.print-dossier) {
+    display: none !important;
+  }
+
+  .print-dossier {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 20px !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+  }
+
+  .page-break {
+    page-break-after: always;
+    break-after: page;
+  }
+
+  .avoid-break {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}
